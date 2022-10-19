@@ -1,0 +1,15 @@
+.fill
+{
+   height: 94vh;
+}
+
+.panel_contenido
+{
+     height: 80vh;
+     overflow: auto;
+}
+
+.panel_footer
+{
+height: 10vh;
+}

@@ -1,0 +1,31 @@
+
+<div class="container mt-4">
+    <div class="row">
+    <div class="col-md-6">
+    <h3>Lista de estudiantes</h3>
+    </div>
+    <div class="col-md-6 text-end" *ngIf="listEstudiantes.length > 0">
+      <button class="btn btn-primary ml-auto" (click)="mostrarEstudiantes()">Mostrar estudiantes</button>    
+        </div>
+        </div>
+    <table class="table" *ngIf="mostrar">
+        <thead>
+            <th>Nro.</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Opción</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let estudiante of listEstudiantes; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{estudiante.nombre}}</td>
+                <td [ngStyle]="{'font-weight': 'bold','color': estudiante.estado ==='Aprobado'|| estudiante.estado ==='Aprobada'?'green':'red'}"> {{estudiante.estado}}</td>
+                <td>
+                    <button type="button" [ngClass]="estudiante.estado ==='Aprobado' || estudiante.estado === 'Aprobada'?'btn btn-outline-success': 'btn btn-outline-danger'">{{ estudiante.estado ==='Aprobado' || estudiante.estado=='Aprobada'?'Reinscribir al Próximo': 'Registrar Baja'}}</button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <h4 *ngIf="listEstudiantes.length==0">No hay estudiantes a mostrar</h4>
+    </div>

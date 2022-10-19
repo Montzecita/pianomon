@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <div class="row">
+    <div class="col-md-6">
+    <h3>Lista de estudiantes</h3>
+    </div>
+    <div class="col-md-6 text-end" *ngIf="listEstudiantes.length > 0">
+      <button class="btn btn-primary ml-auto" (click)="mostrarEstudiantes()">Mostrar estudiantes</button>    
+        </div>
+        </div>
+    <table class="table table-hover" *ngIf="mostrar">
+        <thead>
+            <th>Nro.</th>
+            <th>Nombre</th>
+            <th>Estado</th>
+            <th>Opción</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let estudiante of listEstudiantes; let i=index" [ngSwitch]="estudiante.estado">
+                <td>{{i+1}}</td>
+                <td>{{estudiante.nombre}}</td>
+                <td>
+                    <span *ngSwitchCase="'Aprobado'" class="text-success fw-bold">{{ estudiante.estado }}</span>
+                    <span *ngSwitchCase="'Aprobada'" class="text-success fw-bold">{{ estudiante.estado }}</span>
+                    <span *ngSwitchCase="'No Aprobado'" class="text-danger fw-bold">{{ estudiante.estado }}</span>
+                    <span *ngSwitchCase="'No Aprobada'" class="text-danger fw-bold">{{ estudiante.estado }}</span>
+                    <span *ngSwitchCase="'Aspirante'" class="text-warning fw-bold">{{ estudiante.estado }}</span>
+                    <span *ngSwitchDefault class="text-black-50 fw-bold">{{estudiante.estado}}</span>
+                </td>
+                <td>
+                    <button *ngSwitchCase="'Aprobado'" type="button" class='btn btn-outline-success'>Reinscribir </button>
+                    <button *ngSwitchCase="'Aprobada'" type="button" class='btn btn-outline-success'>Reinscribir </button>
+                    <button *ngSwitchCase="'No Aprobado'" type="button" class='btn btn-outline-danger'>Registrar Baja </button>
+                    <button *ngSwitchCase="'No Aprobada'" type="button" class='btn btn-outline-danger'>Registrar Baja </button>
+                    <button *ngSwitchCase="'Aspirante'" type="button" class='btn btn-outline-warning'>Inscribir </button>
+                    <span *ngSwitchDefault>Sin Opciones</span>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <h4 *ngIf="listEstudiantes.length==0">No hay estudiantes a mostrar</h4>
+    </div>
